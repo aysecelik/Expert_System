@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>UZMAN SİSTEM</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--Stylesheet-->
+    <style>
+        body{
+            background-image: url("./static/images.png");
+            
+            background-size:100% 100%;
+        }
+      .text{
+          color: gray;
+          font-size: 15px;
+          font-weight: bold;
+          top: 12;
+          border-bottom: 2px solid gray;
+          margin-left: 2%;
+          width:96%;
+          margin-top:3%;
+      }
+      .title{
+          color: gray;
+          font-size: 15px;
+          font-weight: bold;
+          top: 12;
+          border-bottom: 2px solid gray;
+          margin-left: 2%;
+          width:96%;
+          text-align: center;
+  
+      }
+      .card-style{
+          width: 30%;
+          position: relative;
+          background:rgb(241, 206, 206);
+          border-radius: 5px;
+          margin-right:2%;
+          margin-bottom: 5%;
+          float: right;
+          
+      }
+      
+    
+      .button-local{
+          width: 60%;          
+          height:5%;
+          margin-top:3%;
+          background-color: #ea3e3e; /* Green */
+          border: none;
+          color: white;
+          text-align: center;
+          text-decoration: none;
+          border-radius: 5%;
+          margin-bottom:5%;
+          float: right;
+          margin-right: 7%;
+
+      }
+      .button-local:hover {
+          background-color: lightgray; /* Green */
+          color: white;
+          cursor: pointer;
+
+      }
+      .button-offer{
+          margin-left: 2%;
+          width: 60%;
+          margin-top:1%;
+          border-radius: 5%; 
+          border: 2px solid #ea3e3e ;
+          
+
+
+      }
+
+      select{
+          margin-left: 2%;
+          width: 60%;
+          margin-top:1%;
+          border-radius: 5%; 
+          border: 2px solid #ea3e3e ;
+          height:30px;
+
+
+      }
+     
+     .lable{
+        margin-top: 5%;
+        margin-left:3%;
+        width: 25%;
+
+      }
+      .lable2{
+        margin-top: 5%;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .modal {
+        display: none; /* Varsayılan olarak gizlidir */
+        position: fixed; /* Yerinde kal */
+        z-index: 1; /* Üstte */
+        left: 0;
+        top: 0;
+        width: 100%; /* Ful Genişlik */
+        height: 100%; /* Ful Yükseklik */
+        overflow: auto; /* Gerekirse kaydırmayı etkinleştir */
+        background-color: rgb(0,0,0); /* Yedek renk */
+        background-color: rgba(0,0,0,0.4); /* Siyah w / opaklık */
+        }   
+
+    /* İçerik / Kutu */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* % 15 üstten ve ortalanmış */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Ekran boyutuna bağlı olarak daha fazla veya daha az olabilir */
+        text-align: center
+    }
+
+    /* Kapat Düğmesi */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+      </style>
+  </head>
+  <body>
+
+    <div class="text-center well" style="color: rgb(226, 31, 31); height: 20px;"><b>KALP YETMEZLİĞİ TAHMİNİ</b></div>
+
+    <div class="card-style"> 
+    <div class="text">TIBBI SONUÇLARINIZ</div>
+
+                <label class="lable">Yaşınız</label>
+                <label class="lable2">:</label>
+                <input id="age" class="button-offer" type="number">  
+                <label class="lable">Cinsiyetiniz</label>
+                <label class="lable2">:</label>
+                <select name="Sex" id="sex">
+                    <option value="">Lütfen Cinsiyetinizi Seçiniz</option>
+                    <option value="0">Kadın</option>
+                    <option value="1">Erkek</option>
+                  </select> 
+                <label class="lable">ChestPainType</label>
+                <label class="lable2">:</label>
+                <select name="pain" id="pain">
+                    <option value="">Lütfen ChestPainType Seçiniz</option>
+                    <option value="1">ATA</option>
+                    <option value="2">NAP</option>
+                    <option value="0">ASY</option>
+                    <option value="3">TA</option>
+                  </select> 
+                <label class="lable">RestingBP</label>
+                <label class="lable2">:</label>
+                <input id="restingBP" class="button-offer" type="number">  
+                
+                <label class="lable">Colesterol</label>
+                <label class="lable2">:</label>
+                <input id="colesterol" class="button-offer" type="number">  
+                
+                <label class="lable">FastingBS</label>
+                <label class="lable2">:</label>
+                <select name="fasting" id="fasting">
+                    <option value="">Lütfen FastingBS Seçiniz</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                  </select> 
+                
+                <label class="lable">RestingECG</label>
+                <label class="lable2">:</label>
+                <select name="restingECG" id="restingECG">
+                    <option value="">Lütfen RestingECG Seçiniz</option>
+                    <option value="1">Normal</option>
+                    <option value="2">ST</option>
+                    <option value="0">LVH</option>
+                  </select> 
+                
+                <label class="lable">MaxHR</label>
+                <label class="lable2">:</label>
+                <input id="MaxHR" class="button-offer" type="number">  
+                
+                <label class="lable">ExerciseAngina</label>
+                <label class="lable2">:</label>
+                <select name="ExerciseAngina" id="ExerciseAngina">
+                    <option value="">Lütfen ExerciseAngina Seçiniz</option>
+                    <option value="1">Evet</option>
+                    <option value="0">Hayır</option>
+                  </select> 
+                
+                <label class="lable">Oldpeak</label>
+                <label class="lable2">:</label>
+                <input id="Oldpeak" class="button-offer" type="text">
+                
+                <label class="lable">ST_SLOPE</label>
+                <label class="lable2">:</label>
+                <select name="ST_SLOPE" id="ST_SLOPE">
+                    <option value="">Lütfen ST_SLOPE Seçiniz</option>
+                    <option value="2">Up</option>
+                    <option value="1">Flat</option>
+                    <option value="0">Down</option>
+
+                  </select>   
+                <script>
+               var check = function(evt){
+
+                        var data = document.getElementById('Oldpeak').value;
+                        if((evt.charCode>= 48 && evt.charCode <= 57) || evt.charCode== 46 ||evt.charCode == 0){
+                        if(data.indexOf('.') > -1){
+                        if(evt.charCode== 46)
+                        evt.preventDefault();
+                        }
+                        }else
+                        evt.preventDefault();
+                        };
+
+                        document.getElementById('Oldpeak').addEventListener('keypress',check);
+                </script>
+                </input> 
+                <input type="button" class="button-local" value="SORGULA" onclick="myFunction()" />
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <p class="title">SONUCUNUZ</p>
+                        
+                      <p id="place_for_suggestions" class="lable2" ></p>
+                    </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script>
+        var modal = document.getElementById('myModal');
+        var span = document.getElementsByClassName("close")[0];
+        function wait(ms){
+            var start = new Date().getTime();
+            var end = start;
+            while(end < start + ms) {
+                end = new Date().getTime();
+            }
+        }
+        function myFunction() {
+            var age = document.getElementById('age').value;
+            var sex= $('select[name=Sex] option').filter(':selected').val()
+            var pain= $('select[name=pain] option').filter(':selected').val()
+            var restingBP = document.getElementById('restingBP').value;
+            var colesterol = document.getElementById('colesterol').value;
+            var fasting= $('select[name=fasting] option').filter(':selected').val()
+            var restingECG= $('select[name=restingECG] option').filter(':selected').val()
+            var MaxHR = document.getElementById('MaxHR').value;   
+            var ExerciseAngina= $('select[name=ExerciseAngina] option').filter(':selected').val()
+            var Oldpeak = document.getElementById('Oldpeak').value;
+            var ST_SLOPE= $('select[name=ST_SLOPE] option').filter(':selected').val()
+            if(age.trim()=="" | sex =="" | pain=="" | restingBP.trim()=="" | colesterol.trim()=="" | fasting=="" | restingECG=="" | MaxHR.trim()=="" | ExerciseAngina=="" | Oldpeak.trim()=="" | ST_SLOPE=="" ){
+                alert("LÜTFEN TÜM DEĞERLERİNİZİ GİRİNİZ!!")
+            }
+            else{
+                modal.style.display = "block";
+
+            // var postdata=age+',' +sex+','+pain+','+restingBP+','+colesterol+','+fasting+','+restingECG+','+MaxHR+','+ExerciseAngina+','+Oldpeak+','+ST_SLOPE;
+            var postdata={"Age":age,"Sex":sex,"ChestPainType":pain,"RestingBP":restingBP,"Cholesterol":colesterol,"FastingBS":fasting,
+                            "RestingECG":restingECG,"MaxHR":MaxHR,"ExerciseAngina":ExerciseAngina,"Oldpeak":Oldpeak,"ST_Slope":ST_SLOPE}
+            // postdata.push(age,sex,pain,restingBP,colesterol,fasting,restingECG,MaxHR,ExerciseAngina,Oldpeak,ST_SLOPE)
+            $.ajax({
+            type: "POST",
+            url: location.origin+'/answer',
+            contentType: 'application/json;charset=UTF-8',
+            data: JSON.stringify(postdata),
+            success: function(response) {
+                    $("#place_for_suggestions").html(response);
+                    if(response=="KALP YETMEZLİĞİ RİSKİ VARDIR."){
+                        red=document.getElementById("place_for_suggestions")
+                        red.style.color="red"
+                    }
+                    if(response=="KALP YETMEZLİĞİ RİSKİ YOKTUR."){
+                        red=document.getElementById("place_for_suggestions")
+                        red.style.color="green"
+                    }
+                },
+                error: function(xhr) {
+                    //Do Something to handle error
+                }
+                
+            });
+            
+            // document.getElementById('place_for_suggestions').innerText = "someVar"
+            wait(1000)
+            $.ajax({
+                url: location.origin+ "/result",
+                type: "get",
+                success: function(response) {
+                    $("#place_for_suggestions").html(response);
+                    if(response=="KALP YETMEZLİĞİ RİSKİ VARDIR."){
+                        red=document.getElementById("place_for_suggestions")
+                        red.style.color="red"
+                    }
+                    if(response=="KALP YETMEZLİĞİ RİSKİ YOKTUR."){
+                        red=document.getElementById("place_for_suggestions")
+                        red.style.color="green"
+                    }
+                },
+                error: function(xhr) {
+                    //Do Something to handle error
+                }
+                });
+                $.ajax({
+                url: location.origin+ "/result",
+                type: "get",
+                success: function(response) {
+                    $("#place_for_suggestions").html(response);
+                    if(response=="KALP YETMEZLİĞİ RİSKİ VARDIR."){
+                        red=document.getElementById("place_for_suggestions")
+                        red.style.color="red"
+                    }
+                    if(response=="KALP YETMEZLİĞİ RİSKİ YOKTUR."){
+                        red=document.getElementById("place_for_suggestions")
+                        red.style.color="green"
+                    }
+                },
+                error: function(xhr) {
+                    //Do Something to handle error
+                }
+                });
+            
+
+        }
+        span.onclick = function() {
+            modal.style.display = "none";
+
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+
+            }
+        }
+        }
+    </script>
+  </body>
+</html>
